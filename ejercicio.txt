@@ -1,0 +1,436 @@
+# EJERCICIO INTEGRADOR DE ANGULAR
+## Simulador de dados y análisis estadístico
+
+**Módulo:** Desarrollo de Interfaces  
+**Tecnologías:** Angular, TypeScript, HTML y CSS  
+**Modalidad:** Ejercicio práctico integrador
+
+---
+
+## 1. Descripción general
+
+Desarrollar una aplicación web utilizando Angular que permita simular el lanzamiento de varios dados, registrar los resultados obtenidos y realizar un análisis estadístico de las tiradas.
+
+La aplicación deberá permitir configurar una partida, realizar lanzamientos, visualizar los resultados de cada dado y calcular el porcentaje de aparición de cada cara.
+
+Como configuración inicial, se utilizarán **8 dados de 6 caras y un máximo de 10 tiradas por partida**.
+
+El proyecto deberá organizarse mediante componentes reutilizables, interfaces y servicios. También deberá incorporar formularios, mecanismos de comunicación entre componentes, navegación entre páginas y acceso a información externa.
+
+## 2. Creación y configuración del proyecto
+
+Crear un nuevo proyecto Angular denominado `simulador-dados`.
+
+La aplicación deberá utilizar la arquitectura standalone.
+
+Se deberán realizar las siguientes operaciones:
+
+1. Crear el proyecto mediante Angular CLI.
+2. Configurar los archivos iniciales de la aplicación.
+3. Establecer el título de la página como «Simulador de Dados».
+4. Crear los componentes, servicios e interfaces necesarios.
+5. Organizar correctamente los archivos y carpetas.
+6. Configurar las rutas necesarias para navegar entre las distintas secciones de la aplicación.
+
+La aplicación deberá ejecutarse correctamente en el navegador.
+
+## 3. Simulación del lanzamiento de dados
+
+Crear una sección que permita realizar lanzamientos de dados.
+
+Inicialmente deberán mostrarse ocho dados, cada uno con un valor comprendido entre 1 y 6.
+
+Incorporar un botón denominado **«Lanzar dados»**.
+
+Al pulsarlo, la aplicación deberá:
+
+1. Generar aleatoriamente un nuevo valor para cada dado.
+2. Actualizar automáticamente los valores mostrados en pantalla.
+3. Calcular la suma de los valores obtenidos.
+4. Determinar el valor máximo y mínimo de la tirada.
+5. Comprobar si todos los dados muestran el mismo número.
+6. Mostrar un mensaje indicando el resultado de la tirada.
+
+Se considerará que el jugador ha ganado una tirada cuando todos los dados tengan el mismo valor.
+
+En caso contrario, se mostrará el mensaje «Has perdido».
+
+Los dados deberán representarse mediante un componente independiente y reutilizable, que reciba el valor correspondiente desde su componente padre.
+
+## 4. Control de las tiradas
+
+Cada partida tendrá un máximo de diez tiradas.
+
+La aplicación deberá:
+
+1. Mantener un contador de las tiradas realizadas.
+2. Mostrar el número de tirada actual.
+3. Registrar los resultados de cada lanzamiento.
+4. Impedir nuevos lanzamientos cuando se alcance el número máximo de tiradas.
+5. Mostrar un mensaje indicando que la partida ha finalizado.
+6. Permitir reiniciar la partida mediante un botón.
+
+Al reiniciar, deberán eliminarse los resultados anteriores y restablecerse los contadores y las estadísticas.
+
+La finalización de una partida no dependerá de que el jugador haya ganado alguna tirada.
+
+## 5. Cálculo de estadísticas
+
+La aplicación deberá almacenar todos los resultados obtenidos durante la partida.
+
+Después de cada tirada se actualizarán las estadísticas, teniendo en cuenta todos los dados lanzados hasta ese momento.
+
+Se deberá calcular:
+
+**a) Número de apariciones de cada cara**
+
+Contabilizar cuántas veces ha aparecido cada valor posible del dado.
+
+**b) Porcentaje de aparición de cada cara**
+
+Calcular el porcentaje correspondiente a cada cara respecto al total de resultados registrados.
+
+Para la configuración inicial, al completar diez tiradas de ocho dados se habrán generado 80 resultados.
+
+El porcentaje deberá calcularse utilizando la expresión:
+
+\[
+\text{Porcentaje}=
+\frac{\text{Número de apariciones de una cara}}
+{\text{Número total de resultados}}
+\times100
+\]
+
+**c) Cara más frecuente**
+
+Determinar qué cara ha aparecido más veces.
+
+**d) Cara menos frecuente**
+
+Determinar qué cara ha aparecido menos veces, incluyendo aquellas que todavía no hayan aparecido.
+
+En caso de empate, deberán mostrarse todas las caras correspondientes.
+
+**e) Media de los resultados**
+
+Calcular la media aritmética de todos los valores obtenidos.
+
+**f) Número de tiradas ganadoras**
+
+Contabilizar cuántas tiradas han producido ocho dados iguales.
+
+**g) Porcentaje de tiradas ganadoras**
+
+Calcular qué porcentaje de las tiradas realizadas ha terminado en victoria.
+
+Las estadísticas deberán actualizarse automáticamente después de cada lanzamiento.
+
+Cuando todavía no se haya realizado ninguna tirada, los porcentajes deberán mostrarse como 0 %, evitando divisiones entre cero.
+
+## 6. Visualización de estadísticas
+
+Crear un componente independiente que muestre las estadísticas de la partida.
+
+Se deberá utilizar una tabla con las siguientes columnas:
+
+| Cara | Apariciones | Porcentaje |
+|---|---|---|
+| 1 | Cantidad | Porcentaje |
+| 2 | Cantidad | Porcentaje |
+| 3 | Cantidad | Porcentaje |
+| 4 | Cantidad | Porcentaje |
+| 5 | Cantidad | Porcentaje |
+| 6 | Cantidad | Porcentaje |
+
+Los porcentajes deberán mostrarse con dos decimales.
+
+Además, se deberán mostrar los siguientes datos:
+
+- Total de tiradas realizadas.
+- Total de resultados registrados.
+- Media de los resultados.
+- Cara o caras más frecuentes.
+- Cara o caras menos frecuentes.
+- Número de tiradas ganadoras.
+- Porcentaje de victorias.
+
+La aplicación deberá mostrar un mensaje especial cuando alguna cara supere el 20 % de aparición.
+
+La tabla deberá reflejar los cambios sin necesidad de recargar la página.
+
+## 7. Configuración de la partida
+
+Crear un formulario que permita modificar los parámetros de la partida antes de comenzar.
+
+El formulario deberá incluir los siguientes campos:
+
+| Campo | Valor inicial |
+|---|---|
+| Nombre del jugador | Vacío |
+| Número de dados | 8 |
+| Número máximo de tiradas | 10 |
+| Número de caras por dado | 6 |
+
+Se deberán cumplir las siguientes condiciones:
+
+1. El nombre del jugador no podrá estar vacío.
+2. El número de dados deberá estar comprendido entre 1 y 10.
+3. El número máximo de tiradas deberá estar comprendido entre 1 y 20.
+4. El número de caras podrá ser 4, 6, 8, 10, 12 o 20.
+5. No se podrá comenzar una partida con datos incorrectos.
+6. Se mostrarán mensajes informativos cuando los valores introducidos no sean válidos.
+
+Una vez aceptada la configuración, los parámetros deberán aplicarse al simulador.
+
+El programa deberá adaptar automáticamente los lanzamientos y las estadísticas al número de dados, caras y tiradas seleccionado.
+
+La configuración inicial seguirá siendo de ocho dados, seis caras y diez tiradas.
+
+No se permitirá modificar la configuración mientras una partida esté en curso.
+
+## 8. Componentes y comunicación
+
+La aplicación deberá organizarse en componentes independientes.
+
+Como mínimo deberán existir componentes encargados de las siguientes funcionalidades:
+
+- Mostrar un dado.
+- Gestionar los lanzamientos.
+- Mostrar las estadísticas.
+- Configurar la partida.
+- Consultar el historial de partidas.
+
+Se deberá implementar la comunicación entre componentes.
+
+**Comunicación del padre al hijo**
+
+El componente encargado de representar un dado deberá recibir desde su padre el valor que debe mostrar.
+
+El componente de estadísticas deberá poder recibir la información necesaria para representar los resultados.
+
+**Comunicación del hijo al padre**
+
+El componente de configuración deberá comunicar al componente padre cuándo se ha solicitado comenzar una partida, enviando los datos introducidos.
+
+El componente que gestiona los lanzamientos deberá comunicar cuándo ha finalizado una partida.
+
+Los componentes deberán mantener sus responsabilidades claramente separadas.
+
+## 9. Interfaces TypeScript
+
+Definir las interfaces necesarias para representar correctamente la información utilizada por la aplicación.
+
+Como mínimo, deberán contemplarse las siguientes estructuras:
+
+**Configuración de partida**
+
+Almacenará los datos del jugador y los parámetros seleccionados.
+
+**Tirada**
+
+Almacenará el número de tirada, los resultados obtenidos, la suma de los dados y si se ha producido una victoria.
+
+**Estadística de una cara**
+
+Almacenará el valor de la cara, su número de apariciones y su porcentaje.
+
+**Partida**
+
+Almacenará el identificador de la partida, su configuración, la fecha, las tiradas realizadas y su estado.
+
+Las interfaces deberán definirse en archivos independientes y utilizarse en los componentes y servicios correspondientes.
+
+Se evitará utilizar tipos genéricos sin definir, como `any`, cuando se conozca la estructura de los datos.
+
+## 10. Estado reactivo
+
+La aplicación deberá utilizar mecanismos de estado reactivo para mantener actualizada la información.
+
+Como mínimo, deberán gestionarse de forma reactiva:
+
+1. Los valores actuales de los dados.
+2. El número de tiradas realizadas.
+3. El historial de resultados de la partida.
+4. El estado de finalización.
+5. Las estadísticas calculadas.
+
+Los valores derivados, como el total de resultados, los porcentajes y la media, deberán recalcularse cuando cambien los datos de los que dependen.
+
+La información mostrada deberá actualizarse automáticamente, sin recargar la página.
+
+## 11. Servicios
+
+Crear un servicio encargado de centralizar la lógica y los datos de las partidas.
+
+El servicio deberá permitir:
+
+1. Crear una nueva partida.
+2. Generar los resultados de un lanzamiento.
+3. Registrar una tirada.
+4. Obtener los resultados acumulados.
+5. Consultar las estadísticas.
+6. Comprobar si se ha alcanzado el límite de tiradas.
+7. Finalizar una partida.
+8. Reiniciar la partida actual.
+9. Consultar el historial de partidas.
+
+Los datos internos que no deban modificarse directamente desde otros componentes deberán mantenerse encapsulados.
+
+El servicio deberá proporcionar métodos o propiedades de consulta para acceder a la información necesaria.
+
+Los componentes deberán utilizar el servicio sin crear manualmente nuevas instancias de este.
+
+## 12. Historial de partidas
+
+Incorporar una sección que permita consultar las partidas realizadas durante la sesión actual de la aplicación.
+
+Para cada partida se deberá mostrar:
+
+- Identificador.
+- Nombre del jugador.
+- Fecha.
+- Número de dados utilizados.
+- Número de tiradas realizadas.
+- Número de victorias.
+- Media de los resultados.
+- Estado de la partida.
+
+Al seleccionar una partida, deberán mostrarse sus estadísticas.
+
+La información se conservará mientras la aplicación permanezca abierta, pero no será obligatorio almacenarla de forma permanente en una base de datos.
+
+## 13. Navegación entre páginas
+
+La aplicación deberá disponer de las siguientes secciones:
+
+**Inicio**
+
+Mostrará el título de la aplicación y permitirá acceder a las distintas funcionalidades.
+
+**Juego**
+
+Permitirá configurar una partida y realizar los lanzamientos.
+
+**Estadísticas**
+
+Mostrará las estadísticas de la partida actual o de la última partida finalizada.
+
+**Historial**
+
+Mostrará las partidas realizadas y permitirá consultar sus resultados.
+
+La navegación deberá realizarse utilizando el sistema de rutas de Angular, sin recargar completamente la aplicación.
+
+También deberá contemplarse una ruta para las direcciones no reconocidas.
+
+## 14. Consulta de información mediante HTTP
+
+Incorporar una funcionalidad que permita obtener estadísticas de referencia desde una fuente externa.
+
+La aplicación deberá consultar un servicio HTTP que devuelva información en formato JSON sobre la frecuencia de aparición de las caras de un dado.
+
+Los datos recibidos deberán representarse mediante interfaces TypeScript.
+
+La consulta deberá realizarse desde un servicio de Angular.
+
+La aplicación deberá:
+
+1. Solicitar los datos mediante HTTP.
+2. Procesar la respuesta recibida.
+3. Mostrar los resultados en una tabla.
+4. Calcular los porcentajes de referencia cuando sea necesario.
+5. Comparar los porcentajes obtenidos por el jugador con los valores de referencia.
+6. Mostrar un mensaje cuando la consulta no pueda completarse.
+
+Para realizar este apartado se proporcionará una URL de una API de pruebas o un recurso HTTP que devuelva los datos necesarios.
+
+No será obligatorio desarrollar el servidor que proporciona la información.
+
+## 15. Requisitos adicionales de TypeScript
+
+A lo largo del desarrollo se deberán aplicar los fundamentos de TypeScript estudiados en clase.
+
+La solución deberá incluir ejemplos funcionales de:
+
+- Tipos de datos y arrays.
+- Interfaces y objetos.
+- Funciones con parámetros y valores de retorno.
+- Parámetros opcionales y valores por defecto.
+- Funciones flecha.
+- Desestructuración de objetos y arrays.
+- Importación y exportación de elementos.
+- Clases, constructores y modificadores de acceso.
+- Herencia entre clases.
+- Funciones genéricas.
+- Encadenamiento opcional.
+- Copia de arrays mediante el operador spread.
+- Propiedades calculadas mediante getters.
+
+Estos elementos deberán utilizarse de forma justificada y coherente con la lógica de la aplicación.
+
+## 16. Requisitos de presentación
+
+La aplicación deberá disponer de una interfaz sencilla y organizada.
+
+Se valorará que:
+
+1. Los dados se visualicen claramente.
+2. Los botones estén correctamente identificados.
+3. Las estadísticas se presenten de forma legible.
+4. Los mensajes de victoria o derrota sean fácilmente distinguibles.
+5. Los formularios indiquen los errores de validación.
+6. La navegación entre secciones resulte intuitiva.
+7. Los componentes tengan estilos adecuados.
+8. No aparezcan errores en la consola del navegador durante el funcionamiento normal.
+
+## 17. Comprobaciones finales
+
+Una vez desarrollada la aplicación, comprobar los siguientes casos:
+
+**Caso 1. Partida inicial**
+
+Configurar una partida de ocho dados, seis caras y diez tiradas.
+
+Realizar los diez lanzamientos y comprobar que se han registrado exactamente 80 resultados.
+
+**Caso 2. Porcentajes**
+
+Comprobar que la suma de los porcentajes de aparición de todas las caras es igual al 100 %, salvo pequeñas diferencias debidas al redondeo.
+
+**Caso 3. Reinicio**
+
+Reiniciar la partida y comprobar que desaparecen los resultados anteriores.
+
+**Caso 4. Configuración personalizada**
+
+Crear una partida de cuatro dados, seis caras y cinco tiradas.
+
+Comprobar que al finalizar se han registrado exactamente 20 resultados.
+
+**Caso 5. Validación**
+
+Intentar comenzar una partida sin introducir el nombre del jugador.
+
+La aplicación deberá impedirlo e informar del error.
+
+**Caso 6. Finalización**
+
+Completar todas las tiradas permitidas y comprobar que no se pueden realizar nuevos lanzamientos.
+
+**Caso 7. Historial**
+
+Completar dos partidas diferentes y comprobar que ambas aparecen en el historial.
+
+**Caso 8. Consulta HTTP**
+
+Consultar los datos externos y comprobar que se muestran correctamente o que aparece un mensaje de error si la consulta falla.
+
+---
+
+## 18. Resultado esperado
+
+Al finalizar el ejercicio deberá obtenerse una aplicación Angular funcional que permita configurar y simular partidas de dados, calcular estadísticas de aparición de las distintas caras, visualizar resultados mediante componentes reutilizables y consultar un historial de partidas.
+
+El desarrollo deberá demostrar la correcta utilización de TypeScript, componentes Angular, binding, directivas, formularios, comunicación entre componentes, estado reactivo, servicios, inyección de dependencias, rutas y peticiones HTTP.
+
+**La aplicación deberá funcionar sin necesidad de recargar manualmente el navegador para reflejar los cambios producidos durante el juego.**
